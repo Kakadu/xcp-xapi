@@ -84,6 +84,11 @@ Description: Xen Cloud Platform - memory ballooning daemon
  This daemon takes requests from xapi, the XenAPI server, in the form of
  xenstore trees, and can balloons domains up and down.
 
+Package: xcp-serrerd
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, lsb-base, xen-hypervisor-4.1-amd64 | xen-hypervisor-4.1-i386 | xen-hypervisor-4.1, xen-utils-common
+Description: squeezed clone
+
 Package: xcp-v6d
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, lsb-base

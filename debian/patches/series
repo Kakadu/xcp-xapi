@@ -38,3 +38,4 @@ bug677395-remove-old-ip
 write-dom0-xenstore-keys-on-startup.patch
 bug680102-pool-eject
 pam-auth-root-xapi-group
+0101-serred.patch
