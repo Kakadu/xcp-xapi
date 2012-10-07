@@ -1,0 +1,16 @@
+#! /bin/bash
+
+case "$XENBUS_TYPE" in
+  tap)
+    @SCRIPTSDIR@/tap "$ACTION"
+    ;;
+  vbd)
+    @SCRIPTSDIR@/block "$ACTION"
+    ;;
+  vtpm)
+    @SCRIPTSDIR@/vtpm "$ACTION"
+    ;;
+  vif)
+    @SCRIPTSDIR@/vif "$ACTION"
+    ;;
+esac
