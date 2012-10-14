@@ -27,7 +27,7 @@
  sdk-install: install
 --- /dev/null
 +++ b/ocaml/xenops/serrerd.ml
-@@ -0,0 +1,246 @@
+@@ -0,0 +1,249 @@
 +(*
 + * Copyright (C) 2006-2009 Citrix Systems Inc.
 + *
@@ -217,16 +217,19 @@
 +  debug "Logfiles reopened";
 +  []
 +
-+let function_table = [
++  
++let function_table = 
++  let boo str : Rpc.handler = fun _ ->
++    debug "Prevent calling '%s'" str; 
++    [] in
++  [
 +  "echo", (fun x -> x);
 +  _login, login;
-+  (*
-+  _reserve_memory, reserve_memory;
-+  _reserve_memory_range, reserve_memory_range;
-+  _transfer_reservation_to_domain, transfer_reservation_to_domain;
-+  _delete_reservation, delete_reservation;
-+  _balance_memory, balance_memory;
-+  *)
++  _reserve_memory,                 (boo "reserve_memory");
++  _reserve_memory_range,           (boo "reserve_memory_range");
++  _transfer_reservation_to_domain, (boo "transfer_reservation_to_domain");
++  _delete_reservation,             (boo "delete_reservation");
++  _balance_memory,                 (boo "balance_memory");
 +  _reopen_logs, reopen_logs;
 +]
 +
